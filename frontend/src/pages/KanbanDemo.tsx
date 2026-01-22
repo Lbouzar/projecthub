@@ -67,7 +67,7 @@ function KanbanDemo() {
   const [realtimeActivity, setRealtimeActivity] = useState<string[]>([]);
 
   const onDragEnd = (result: DropResult) => {
-    const { source, destination, draggableId } = result;
+    const { source, destination } = result;
 
     // Dropped outside the list
     if (!destination) {
