@@ -34,13 +34,13 @@ export default {
         },
       },
       borderRadius: {
-        'DEFAULT': '0.5rem',  // 8px instead of 4px
-        'sm': '0.375rem',     // 6px instead of 2px
-        'md': '0.625rem',     // 10px instead of 6px
-        'lg': '1rem',         // 16px instead of 8px
-        'xl': '1.25rem',      // 20px instead of 12px
-        '2xl': '1.5rem',      // 24px instead of 16px
-        '3xl': '2rem',        // 32px instead of 24px
+        'DEFAULT': '1.5rem',  
+        'sm': '0.375rem',    
+        'md': '0.625rem',     
+        'lg': '1rem',         
+        'xl': '1.25rem',     
+        '2xl': '1.5rem',     
+        '3xl': '2rem',        
       },
     },
   },
