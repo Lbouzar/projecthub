@@ -43,7 +43,6 @@ coverage/
 tmp/
 temp/
 *.md
-
 # Uploads
 uploads/
 **/uploads/
@@ -51,9 +50,6 @@ uploads/
 # Database
 *.sqlite
 *.db
-
-# Prisma
-backend/prisma/migrations/
 
 # Docker
 .dockerignore
