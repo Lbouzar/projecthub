@@ -78,13 +78,13 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
     const accessToken = jwt.sign(
       { userId: user.id, email: user.email, role: user.role },
       jwtSecret,
-      { expiresIn: jwtExpiresIn }
+      { expiresIn: jwtExpiresIn } as any
     );
 
     const refreshToken = jwt.sign(
       { userId: user.id },
       jwtRefreshSecret,
-      { expiresIn: jwtRefreshExpiresIn }
+      { expiresIn: jwtRefreshExpiresIn } as any
     );
 
     // Save refresh token
@@ -167,7 +167,7 @@ export const refreshToken = async (req: Request, res: Response, next: NextFuncti
     const accessToken = jwt.sign(
       { userId: user.id, email: user.email, role: user.role },
       jwtSecret,
-      { expiresIn: jwtExpiresIn }
+      { expiresIn: jwtExpiresIn } as any
     );
 
     res.json({
