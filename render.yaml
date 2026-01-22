@@ -5,12 +5,7 @@ databases:
     user: projecthub
     plan: free
 
-  # Redis Cache
-  - name: projecthub-redis
-    plan: free
-
 services:
-
   # Backend API
   - type: web
     name: projecthub-backend
@@ -26,11 +21,6 @@ services:
       - key: DATABASE_URL
         fromDatabase:
           name: projecthub-postgres
-          property: connectionString
-      - key: REDIS_URL
-        fromService:
-          type: redis
-          name: projecthub-redis
           property: connectionString
       - key: JWT_SECRET
         generateValue: true
