@@ -70,16 +70,21 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
     }
 
     // Generate tokens
+    const jwtSecret = process.env.JWT_SECRET || 'fallback-secret';
+    const jwtRefreshSecret = process.env.JWT_REFRESH_SECRET || 'fallback-refresh-secret';
+    const jwtExpiresIn = process.env.JWT_EXPIRES_IN || '1h';
+    const jwtRefreshExpiresIn = process.env.JWT_REFRESH_EXPIRES_IN || '7d';
+
     const accessToken = jwt.sign(
       { userId: user.id, email: user.email, role: user.role },
-      process.env.JWT_SECRET as string,
-      { expiresIn: process.env.JWT_EXPIRES_IN || '1h' }
+      jwtSecret,
+      { expiresIn: jwtExpiresIn }
     );
 
     const refreshToken = jwt.sign(
       { userId: user.id },
-      process.env.JWT_REFRESH_SECRET as string,
-      { expiresIn: process.env.JWT_REFRESH_EXPIRES_IN || '7d' }
+      jwtRefreshSecret,
+      { expiresIn: jwtRefreshExpiresIn }
     );
 
     // Save refresh token
@@ -156,10 +161,13 @@ export const refreshToken = async (req: Request, res: Response, next: NextFuncti
     }
 
     // Generate new access token
+    const jwtSecret = process.env.JWT_SECRET || 'fallback-secret';
+    const jwtExpiresIn = process.env.JWT_EXPIRES_IN || '1h';
+    
     const accessToken = jwt.sign(
       { userId: user.id, email: user.email, role: user.role },
-      process.env.JWT_SECRET as string,
-      { expiresIn: process.env.JWT_EXPIRES_IN || '1h' }
+      jwtSecret,
+      { expiresIn: jwtExpiresIn }
     );
 
     res.json({
