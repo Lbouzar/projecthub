@@ -60,16 +60,9 @@ services:
     staticPublishPath: ./frontend/dist
     envVars:
       - key: VITE_API_URL
-        fromService:
-          type: web
-          name: projecthub-backend
-          envVarKey: RENDER_EXTERNAL_URL
-        value: /api/v1
+        value: https://projecthub-backend.onrender.com/api/v1
       - key: VITE_SOCKET_URL
-        fromService:
-          type: web
-          name: projecthub-backend
-          envVarKey: RENDER_EXTERNAL_URL
+        value: https://projecthub-backend.onrender.com
     routes:
       - type: rewrite
         source: /*
